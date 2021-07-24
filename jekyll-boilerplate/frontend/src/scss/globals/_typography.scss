@@ -1,0 +1,76 @@
+/*
+https: //css-tricks.com/fun-tip-use-calc-to-change-the-height-of-a-hero-component/
+
+Good typography option for padding, line-height and font size for fluid layout.
+
+
+*/
+
+// The important numbers here are 24px (the larger font up to 800px viewports) and 18px (the smaller font size down to 400px viewports). I wouldn’t use the terms "minimum" or "maximum" to describe font sizes and viewports in this context because it is a little misleading. In fact, you still need to provide a default font size for viewports smaller than 400px and bigger than 800px — otherwise, the font will keep getting smaller (or bigger) with the same scale of the equation. Or, if you are fancy, you could define another scale for bigger screen sizes
+
+// p {
+//     font-size: calc(18px + (24 - 18)*(100vw - 400px)/(1200 - 400));
+//     line-height: calc(28px + (38 - 28) * (100vw - 600px) / (1200 - 600));
+//     width: 1200px;
+//     padding: calc(20px + (40 - 20) * (100vw - 600px) / (1200 - 600));
+// }
+
+// Another method is like this:first-of-type
+//https://www.smashingmagazine.com/2015/06/responsive-typography-with-sass-maps/
+//@include font-size($h1-font-sizes); 
+
+body {
+	font-family: $font-base;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: $light;
+	color: $headings;
+	margin-bottom: 4rem;
+}
+
+h1 {	
+	// $map: ($tablet-sml: 28px, $desktop-sml: 65px);
+	// @include poly-fluid-sizing('font-size', $map);
+	@include font-size($h1-font-sizes); 
+}
+
+h2,
+h3 {
+	font-size: 2.7rem;
+
+    @include breakpoint($desktop-sml) {
+        font-size: 3.6rem;
+	}
+}
+
+p {
+	font-size: 1.6rem;
+	line-height: 2.3rem;
+	margin-bottom: 2rem;
+}
+
+
+// Typography Classes //
+
+.heading {
+	font-family: $font-headings;
+	font-weight: $bold;
+//	font-size: 4rem;
+	line-height: 5.4rem;
+	margin-bottom: 2rem;
+
+	&--light {
+		color: $white;
+	}
+
+	&--sub {
+		font-size: 3rem;
+		line-height: 3.5rem;
+	}
+}

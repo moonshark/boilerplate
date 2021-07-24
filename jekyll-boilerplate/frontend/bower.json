@@ -1,0 +1,30 @@
+{
+  "name": "jekyll-boilerplate",
+  "authors": [
+    "Chris Dutton <chris.dutton@kmp.co.uk>"
+  ],
+  "description": "Boilerplate built using Jekyll",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "3.2.1",
+    "jquery-ui": "1.12.1",
+    "velocity": "1.2.3",
+    "select2": "4.0.3",
+    "jquery-lazy": "1.7.10",
+    "slick-carousel": "1.8.1",
+    "matchHeight": "matchheight#0.7.2"
+  },
+  "devDependencies": {
+    "breakpoint-sass": "2.7.1"
+  }
+}

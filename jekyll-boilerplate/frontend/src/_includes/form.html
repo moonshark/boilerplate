@@ -1,0 +1,128 @@
+<!-- This must be present somewhere for it to be compliant-->
+<p>Required fields are indicated with *</p>
+
+<!-- If more than one form, make sure to use aria-labelledby -->
+<form action="" data-role="form-wrapper" class="form">
+  <fieldset>
+
+    <p style="background: #fff2a8; padding: 5px;">This has all possible tags, including when the input is invalid.</p>
+
+    <div class="form__row">
+      <label for="name">Name *</label>
+      <input type="text" placeholder="Full name" id="name" required aria-describedby="rule error" />
+      <span id="rule" style="padding: 5px; display: block;">The name must be over 3 characters long</span>
+      <p id="error" role="alert" class="error">Please enter your name</p>
+    </div>
+
+
+        <div class="form__row">
+          <label for="date">Date Here</label>
+          <input type="text" id="date" data-field="entry-date" placeholder="Date" readonly>
+        </div>
+
+      <!-- Label hidden to user, still in for screen readers -->
+      <div class="form__row">
+        <label for="your-name" class="visuallyhidden">What is your name - this is only for screenreader? *</label>
+        <input type="text" id="your-name" name="name" placeholder="Full name" required  />
+      </div>
+
+      <!-- No label at all, only an input, so put the label text within aria-label -->
+      <div class="form__row">
+        <input type="text" name="name" placeholder="What's your name?" aria-label="What's your name?" required />
+      </div>
+
+
+      <div class="form__row">
+        
+
+        <!-- <select class="selectbox" id="interestedIn" tabindex="-1" aria-hidden="true" data-placeholder="Please choose below"> -->
+          <!-- A blank option tag must be present to show the placeholder-->
+          <!-- <option></option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+        </select> -->
+        <label for="interestedIn">Interested in:</label>
+         <select class="selectbox" id="interestedIn" data-placeholder="Please choose below">
+           <!-- A blank option tag must be present to show the placeholder-->
+           <option></option>
+           <option value="1">1</option>
+           <option value="2">2</option>
+           <option value="3">3</option>
+           <option value="4">4</option>
+           <option value="5">5</option>
+           <option value="6">6</option>
+           <option value="7">7</option>
+           <option value="8">8</option>
+           <option value="9">9</option>
+         </select>
+      </div>
+
+      <p style="background: #fff2a8; padding: 5px;">** Fieldset and legend should only be used when a higher-level label is necessary. Single checkboxes or basic radio buttons that make sense from their labels alone do not require fieldset and legend.</p>
+     <div class="form__row">
+        <fieldset>
+          <legend>What day of the week?</legend>
+          <div class="checkbox-wrap">
+            <input id="monday" type="checkbox" value="monday" name="dayofweek" />
+            <label for="monday"><span></span>Monday</label>
+          </div>
+          <div class="checkbox-wrap">
+            <input id="tuesday" type="checkbox" value="tuesday" name="dayofweek" />
+            <label for="tuesday"><span></span>Tuesday</label>
+          </div>
+          <div class="checkbox-wrap">
+            <input id="wednesday" type="checkbox" value="wednesday" name="dayofweek" />
+            <label for="wednesday"><span></span>Wednesday</label>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="form__row">
+        <div class="checkbox-wrap">
+          <input id="issues" type="checkbox" value="no-issues">
+          <label for="issues">There are no issues</label>
+        </div>
+      </div>
+
+      <div class="form__row">
+        <fieldset>
+          <legend>Payment Method</legend>
+          <div class="radio-wrap">
+            <input id="cash" type="radio" name="payment" value="cash" />
+            <label for="cash"><span></span>Cash</label>
+          </div>
+          <div class="radio-wrap">
+            <input id="check" type="radio" name="payment" value="check" />
+            <label for="check"><span></span>Check</label>
+          </div>
+          <div class="radio-wrap">
+            <input id="credit" type="radio" name="payment" value="credit" />
+            <label for="credit"><span></span>Credit Card</label>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="form__row">
+        <input class="btn btn--primary" type="submit" name="submit" value="Submit this form" />
+      </div>
+
+
+      <h2>These have no for or ID attribute</h2>
+
+        <div class="form__row">
+        <label>Name No ID *<input type="text" placeholder="Full name" required /></label>
+      </div>
+
+
+        <div class="form__row">
+          <label>Date Here with no for or ID<input type="text"  data-field="entry-date" placeholder="Date" readonly></label>
+        </div>
+        
+  </fieldset>
+</form>

@@ -1,0 +1,68 @@
+---
+layout: guide
+title: "Accessibility: Navigation"
+type: "guide"
+---
+
+
+<div class="inner panel-padding">
+  <h3>Navigation</h3>
+
+  <p>Only one <code>nav</code> element should be used per page. This should be the main navigation (unless the footer has identical links. <strong>No need to use navigation within the label, just a short description.</strong></p>
+
+  <blockquote>"The nav element represents a section of a page that links to other pages or to parts within the page: a section with navigation links. Not all groups of links on a page need to be in a nav element only sections that consist of major navigation blocks are appropriate for the nav element. In particular, it is common for footers to have a list of links to various key parts of a site, but the footer element is more appropriate in such cases, and no nav element is necessary for those links." - <strong>HTML5 Doctor</strong></blockquote>
+
+<pre><code class="language-html"> &lt;!-- A label can be added to describe it better --&gt;
+  &lt;nav aria-label=&quot;Main&quot;&gt;
+      &lt;ul&gt;
+        &lt;!-- Content --&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+
+&lt;!-- For secondary navigation, use a div and add a role of navigation with a label, in this case it is in the footer.  --&gt;
+&lt;div role=&quot;navigation&quot; aria-label=&quot;Footer&quot;&gt;
+   &lt;ul&gt;
+     &lt;!-- Content --&gt;
+   &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+
+<h4>Identical Navigation Links</h4>
+
+<p>If a navigation landmark role or <code>nav</code> element in a document is repeated in a document, and both landmarks have <strong>identical content</strong>, use the same label for each landmark. An example of this would be repeating the main navigation at the top and bottom of the page.</p>
+
+<pre><code class="language-html">&lt;header&gt;
+  &lt;nav aria-label=&quot;Main&quot;&gt;
+    &lt;!-- list of links to main website locations --&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+...
+&lt;footer&gt;
+  &lt;nav aria-label=&quot;Main&quot;&gt;
+    &lt;!-- list of links to main website locations --&gt;
+  &lt;/nav&gt;
+&lt;/footer&gt;</code></pre>
+
+<h4>Showing the user the current page for sighted and unsighted users</h4>
+
+<p>When you are on a page, normally we add a class like <strong>active</strong> to show the user the page they are on, however, screen readers cannot tell this. Simply add the following to a link and the screen reader will know.</p>
+
+<pre><code class="language-html">&lt;nav aria-label=&quot;Main&quot;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;/products&quot; aria-current=&quot;page&quot; title=&quot;Our Products&quot; class=&quot;active&quot;&gt;Products&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a title=&quot;About Us&quot; href=&quot;/about-us&quot;&gt;About Us&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+
+    <p>The above works fine, but if you follow it, it will just refresh the page. You could replace the link to the ID taking you to the main part of the page</p>
+
+<pre><code class="language-html">&lt;nav aria-label=&quot;Main&quot;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;/products&quot; aria-current=&quot;page&quot; title=&quot;Our Products&quot; class=&quot;active&quot;&gt;Products&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a title=&quot;About Us&quot; href=&quot;#main-content&quot;&gt;About Us&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;main id=&quot;main-content&quot;&gt;
+  &lt;!-- main content of the page --&gt;
+&lt;/main&gt;</code></pre>
+</div>

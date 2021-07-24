@@ -1,0 +1,61 @@
+---
+layout: default
+title: "Example: Home"
+type: "example"
+---
+
+<!-- 
+	Added so users do not need to tab through the menu all the time.
+
+	HAVE ON ALL PAGES!!!
+
+-->
+<a class="skip-main" href="#content">Skip to main content</a>
+
+{% include header.html %}
+{% include hero.html %}
+
+	<div class="inner">
+
+		<!-- No other role elements should be inside of the main tag. No need to add role="main" -->
+		<main id="content">
+			<p>Each page should have one main landmark.
+
+				<a href="#">here is an example link</a>
+			</p>
+
+			<!-- A region landmark is a perceivable section containing content that is relevant to a specific, author-specified purpose and sufficiently important that users will likely want to be able to navigate to the section easily and to have it listed in a summary of the page..
+
+				If more than one, use aria-labelledby, otherwise no ARIA is needed
+			-->
+			<section class="panel-padding" aria-labelledby="region1">
+				<h2>Section Heading</h2>
+					<p>Lorem ipsum dolor sit amet consectetur</p>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad doloremque rem voluptas sit molestiae assumenda possimus repellendus, inventore perferendis, architecto optio! Sapiente exercitationem deleniti veniam rem officia quod obcaecati atque.</p>
+			</section>
+
+			<section class="panel-padding" aria-labelledby="region2">
+				<h2>Section Heading</h2>
+					<p>Lorem ipsum dolor sit amet consectetur</p>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad doloremque rem voluptas sit molestiae assumenda possimus repellendus, inventore perferendis, architecto optio! Sapiente exercitationem deleniti veniam rem officia quod obcaecati atque.</p>
+			</section>
+		</main>
+				
+
+			<!-- Only One aside does not need a role -->
+		<aside>
+		  <p>A complementary landmark is a supporting section of the document, designed to be complementary to the main content at a similar level in the DOM hierarchy, but remains meaningful when separated from the main content.</p>
+		</aside>
+		
+			<!-- More than 1 complementary landmark need marking like this -->
+		<aside aria-labelledby="comp1">
+		  <p>A complementary landmark is a supporting section of the document, designed to be complementary to the main content at a similar level in the DOM hierarchy, but remains meaningful when separated from the main content.</p>
+		</aside>
+
+		<aside aria-labelledby="comp2">
+			<p>When there is more than one complementary landmark on a page, each should have a unique label.</p>
+		</aside>
+
+	</div>
+
+{% include footer.html %}

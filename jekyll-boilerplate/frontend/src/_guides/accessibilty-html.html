@@ -1,0 +1,254 @@
+---
+layout: guide
+title: "Accessibility: HTML"
+type: "guide"
+---
+
+
+<div class="inner panel-padding">
+  <h2>Using role=""</h2>
+
+         <p>HTML5 introduces many new elements, several of which correspond to, or at least are similar to the ARIA attributes.</p>
+         
+
+    <p>You should <strong>not place</strong> the <code>"role"</code> attribute on another element that already has semantic meaning, like a <code>&lt;ul&gt;</code>. It should only be placed on <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code> elements. </p>
+      
+    <h4>Which role do you use?</h4>
+
+      <p>To find out which roles should go with which widget/tag then see this link, <a href="https://www.w3.org/TR/wai-aria-1.1/#widget_roles" target="_blank">here</a>.  If you select, button for example then the two supported states are: <strong>aria-expanded</strong> and <strong>aria-pressed</strong>. You cannot make your own up.</p>
+
+      <h4>Using Chrome Inspector to check</h4>
+
+<p>Select an element, like button or accordion item and then check 'Accessibility'. You should see the different aria states. If this is as expected then the aria is fine and working correctly.</p>
+
+<h4>HTML/ROLE alternative</h4>
+
+      <p>You can see this <a href="https://gerardkcohen.github.io/periodic-table-of-semantics.html" target="_blank">table of semantics guide</a>, listing all HTML elements available and links it to a role if available.</p>
+  <pre><code class="language-html">&lt;!-- This is wrong, as nav is already a HTML 5 element --&gt;
+&lt;nav role=&quot;navigation&quot;&gt;&lt;/nav&gt;
+
+&lt;!-- When the nav element has been used, you can use a div as only one nav on the page --&gt;
+&lt;div class=&quot;nav&quot; role=&quot;navigation&quot;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Home&lt;/li&gt;
+    &lt;li&gt;Products&lt;/li&gt;
+    &lt;li&gt;Support&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt; </code></pre>
+
+  
+
+  <hr>
+
+  <p>The following table shows how ARIA landmarks should be applied to HTML5 Elements. No need for a role to be applied if using the correct tag</p>
+        
+  <table>
+<thead>
+<tr>
+<th scope="col">ARIA Landmark</th>
+<th scope="col">HTML5 Element</th>
+<th scope="col">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>banner</td>
+<td>&lt;header&gt;</td>
+<td>contains the site-oriented content of each page, like the logo, usually at the top of the page. There should only be one banner landmark per page.</td>
+</tr>
+<tr>
+<td>complementary</td>
+<td>&lt;aside&gt;</td>
+<td>a section of content that complements the main content but also retains its meaning when separated from the main content</td>
+</tr>
+<tr>
+<td>contentinfo</td>
+<td>generic &lt;div&gt; acting as the footer</td>
+<td>contains content usually found in the footer of a page, like copyright and privacy statements. There should only be one contentinfo landmark per page.</td>
+</tr>
+<tr>
+<td>form</td>
+<td>&lt;form&gt; or generic &lt;div&gt;</td>
+<td>contains form input elements which can be edited and submitted by the user</td>
+</tr>
+<tr>
+<td>main</td>
+<td>&lt;main&gt;</td>
+<td>the main content of the page. There should only be one main landmark per page.</td>
+</tr>
+<tr>
+<td>navigation</td>
+<td>&lt;nav&gt;</td>
+<td> a collection of navigation links to navigate the site or page</td>
+</tr>
+<tr>
+<td>search</td>
+<td>&lt;form&gt; or generic &lt;div&gt;</td>
+<td>a search tool</td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<h4>Which tags to use and when?</h4>
+
+<p>You can see all of the aria practices <a href="https://www.w3.org/TR/wai-aria-practices/" target="_blank">here</a> to see what tags etc need to be used for things like accordions, sliders etc.</p>
+
+<table>
+<thead>
+<tr>
+<th scope="col">HTML5 Element</th>
+<th scope="col">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>&lt;main&gt;</td>
+  <td>Main content of the page, this is what people came for</td>
+</tr>
+<tr>
+  <td>&lt;section&gt;</td>
+  <td>Major sections of the page.</td>
+</tr>
+<tr>
+  <td>&lt;article&gt;</td>
+  <td>Repeated content which can be used on their own. Such as posts, category snippets</td>
+</tr>
+<tr>
+  <td>&lt;aside&gt;</td>
+  <td>Related to the main content, but not necessary to understand it, like sidebar</td>
+</tr>
+<tr>
+  <td>&lt;nav&gt;</td>
+  <td>Any major navigation used for links</td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<h3>5 Rules of ARIA!</h3>
+
+<ol class="styled-list">
+  <li>1 - Don’t use ARIA, if you can use HTML instead!</li>
+  <li>2- Don't change native semantics. Use the correct HTML - for example, do not use <code>&lt;a href=&quot;#&quot; role=&quot;button&quot;&gt;Menu&lt;/a&gt;, </code> when just using <code>&lt;button&gt;Menu&lt;/button&gt; will do.</code></li>
+  <li>3- All interactive ARIA roles need to be operable by keyboard.</li>
+  <li>4- Don't use <code>role="presentation"</code> or <code>aria-hidden="true"</code> on visible focusable elements as this will hide it from screen readers. <strong>Do not use on a visible focusable element.</strong></li>
+  <li>5 - All interactive elements have an accessible name</li>
+</ol>
+
+  <hr>
+
+         <h3>Skip to main content</h3>
+         <p>There is a skip to content option added for users to allow to skip the header and navigation for keyboard users so you would not need to hit tab to get past every link.</p>
+
+<pre><code class="language-html">&lt;a class=&quot;skip-main&quot; href=&quot;#content&quot;&gt;Skip to main content&lt;/a&gt;
+
+&lt;!-- Then, have the ID going to the main tag --&gt;
+&lt;main id=&quot;content&quot;&gt;</code></pre>
+
+  <hr>
+
+  <h3>Keyboard Users/Tabbing Order</h3>
+  <p>Sometimes, the tab order may not work as you expect. There are ways around this by using <code>tabindex=""</code>. The values can be -1, 0 or a number greater than 0.</p>
+
+  <p>Ideally it is best to put the HTML in the order you would want to tab. You could then use flexbox and other methods to change the order if needed.</p>
+
+  <pre><code class="language-html">&lt;!-- The 2nd link will not be accessed by using tab --&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Here is a link&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot; tabindex=&quot;-1&quot;&gt;This will not be accessed via the tab&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Here is a link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+         
+ &lt;!-- If you want specifically a certain link or links then set the tab order to a number greater than 0 --&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Here is a link&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot; tabindex=&quot;1&quot;&gt;This link is first&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Here is a link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre> 
+
+<hr>
+
+  <h3>Region Landmarks, Section's on the page</h3>
+
+  <p>A region landmark is a perceivable section containing content that is relevant to a specific, author-specified purpose and sufficiently important that users will likely want to be able to navigate to the section easily and to have it listed in a summary of the page</p>
+
+  <h4>Using <code>section[aria-labelledby]</code> attribute</h4>
+
+  <p>This defines a label for each region using existing content on the page. The <code>aria-labelledby</code> relates to the content within the heading</p>
+
+  <pre><code class="language-html">&lt;main&gt;
+  &lt;h1&gt;title for main content area&lt;h1&gt;
+
+  &lt;section aria-labelledby=&quot;region1&quot;&gt;
+    &lt;h2 id=&quot;region1&quot;&gt;About Us&lt;/h2&gt;
+    &lt;!-- content for region area 1 --&gt;
+  &lt;/section&gt;
+
+  &lt;section aria-labelledby=&quot;region2&quot;&gt;&gt;
+    &lt;h2 id=&quot;region2&quot;&gt;Testimonials from clients&lt;/h2&gt;
+    &lt;!-- content for region area 2 --&gt;
+  &lt;/section&gt;
+
+&lt;/main&gt;</code></pre>
+
+<h4>Using <code>section[aria-label]</code> attribute</h4>
+
+<p>Defines a label for each region using attribute value that is only visible to assistive technologies.</p>
+
+<pre><code class="language-html">&lt;main&gt;
+  &lt;h1&gt;title for main content&lt;h1&gt;
+
+  &lt;section aria-label=&quot;title for region area 1&quot;&gt;
+    &lt;h2&gt;title for region area 1&lt;/h2&gt;
+     &lt;!-- content for region area 1 --&gt;
+  &lt;/section&gt;
+
+  &lt;section aria-label=&quot;title for region area 2&quot;&gt;
+    &lt;h2&gt;title for region area 2&lt;/h2&gt;
+      &lt;!-- content for region area 2 --&gt;
+  &lt;/section&gt;
+&lt;/main&gt;</code></pre>
+
+  <hr>
+
+  <h3>Multiple forms, asides, sections etc</h3>
+
+  <p>If there are multiple <code>section</code>, <code>aside</code>, <code>form</code> tags on the page then each will need to have the <code>aria-labelledby</code> property added to it. If there is only one instance of it on each page, no label is needed</p>
+
+  <pre><code class="language-html">&lt;!-- Only One aside does not need a role --&gt;
+&lt;aside&gt;
+   &lt;p&gt;...&lt;/p&gt;
+&lt;/aside&gt;
+		
+&lt;!-- More than 1 complementary landmark need marking like this --&gt;
+&lt;aside aria-labelledby=&quot;comp1&quot;&gt;
+	&lt;p&gt;...&lt;/p&gt;
+&lt;/aside&gt;
+
+&lt;aside aria-labelledby=&quot;comp2&quot;&gt;
+	...
+&lt;/aside&gt;</code></pre>
+
+<hr>
+
+<h3>Search</h3>
+
+<p>Use the search landmark instead of the form landmark when the form is used for search functionality.</p>
+
+<pre><code class="language-html">&lt;form role=&quot;search&quot;&gt;
+  &lt;input type=&quot;search&quot; aria-label=&quot;search text&quot; size=&quot;20&quot;&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Search&quot;&gt;
+&lt;/form&gt;</code></pre>
+
+
+
+<pre><code class="language-html"></code></pre>
+<pre><code class="language-html"></code></pre>
+<pre><code class="language-html"></code></pre>
+<pre><code class="language-html"></code></pre>
+<pre><code class="language-html"></code></pre>
+
+</div>

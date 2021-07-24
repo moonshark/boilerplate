@@ -1,0 +1,34 @@
+<header>
+  <div class="banner-strip">
+
+    <!-- No need to describe it as being navigation as screen reader will do this -->
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#" aria-current="page" class="active">Nav link #1</a></li>
+        <li><a href="#">Nav link #2</a></li>
+        <li><a href="#">Nav link #3</a></li>
+        <li><a href="#">Nav link #4</a></li>
+      </ul>
+    </nav>
+  </div>
+
+<!-- Only use <nav> when it is major navigation. No need to add a role to a nav element  -->
+  <div role="navigation" aria-label="Secondary">
+    <ul>
+      <li><a href="#">Nav link #1</a></li>
+      <li><a href="#">Nav link #2</a></li>
+      <li><a href="#">Nav link #3</a></li>
+      <li><a href="#">Nav link #4</a></li>
+    </ul>
+  </div>
+
+  <!-- Burger Menu, include label to let screen reader know what is does -->
+  <button aria-label="hamburger menu" class="burger"></button>
+
+  <form role="search">
+    <input type="search" aria-label="search text" size="20">
+    <input type="submit" value="Search">
+</form>
+</header>
+
+

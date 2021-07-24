@@ -1,0 +1,178 @@
+---
+layout: guide
+title: "Accessibility: Tables"
+type: "guide"
+---
+
+
+<div class="inner panel-padding">
+  <h2>Accessibility with Tables</h2>
+  <p>To make tables more acccessible it is a good idea to add a few tags to help the screen reader with reading out the column data.</p>
+
+  <h4>Using caption=""</h4>
+  <p>The <code>&lt;caption&gt;</code> element identifies the table. It can be thought of as a title or a heading for a table</p>
+
+  <p>Adding a scope value to the headers make sure the header that relates to the data is read out to the screen reader. <code>&lt;th scope="col"&gt;</code></p>
+
+  <pre><code class="language-html">&lt;table&gt;
+  &lt;caption&gt;Schedule for the week of March 6&lt;/caption&gt;
+  &lt;tr&gt;
+    &lt;th scope="col"&gt;State &amp; First&lt;/th&gt;
+    &lt;th scope="col"&gt;State &amp; Sixth&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;4:00&lt;/td&gt;
+    &lt;td&gt;4:05&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+
+         <h4>Using Summary=""</h4>
+          <p>The summary can perform two different functions. It is allowable to have the summary perform both functions at the same time.</p>
+         
+         <ul class="styled-list">
+<li>it can describe the layout of the table to help screen reader users know how to navigate the table</li>
+<li>it can describe in narrative form what information the table is trying to convey</li>
+</ul>
+         
+         <pre><code class="language-html">&lt;table summary="Schedule for Route 7 going downtown. Service begins  at 4:00 AM and ends at midnight.
+         Intersections are listed in the top row. Find the intersection closest to your starting point or destination, then read  down that column
+         to find out what time the bus leaves that intersection."&gt;
+  &lt;tr&gt;
+    &lt;th scope="col"&gt;State &amp; First&lt;/th&gt;
+    &lt;th scope="col"&gt;State &amp; Sixth&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;4:00&lt;/td&gt;
+    &lt;td&gt;4:05&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+         
+         <h4>A simple data table with column and row headings</h4>
+<pre><code class="language-html">&lt;table border="1" summary="Pizza sizes are listed in the first row. Types of pizza are listed in the first column.
+Cross-reference them to determine the price of the pizza."&gt;
+  &lt;caption&gt;Pizza Prices&lt;/caption&gt;
+  &lt;tr&gt;
+    &lt;th scope="col"&gt;&amp;nbsp;&lt;/th&gt;
+    &lt;th scope="col"&gt;Small&lt;/th&gt;
+    &lt;th scope="col"&gt;Medum&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;th scope="row"&gt;Cheese&lt;/th&gt;
+    &lt;td&gt;$8&lt;/td&gt;
+    &lt;td&gt;$10&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;th scope="row"&gt;Veggie&lt;/th&gt;
+    &lt;td&gt;$10&lt;/td&gt;
+    &lt;td&gt;$12&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;th scope="row"&gt;Pepperoni&lt;/th&gt;
+    &lt;td&gt;$10&lt;/td&gt;
+    &lt;td&gt;$12&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+         <table border="1">
+<tbody>
+<tr>
+<td scope="col"></td>
+<th scope="col">Small</th>
+<th scope="col">Medum</th>
+</tr>
+<tr>
+<th scope="row">Cheese</th>
+<td>$8</td>
+<td>$10</td>
+</tr>
+<tr>
+<th scope="row">Veggie</th>
+<td>$10</td>
+<td>$12</td>
+</tr>
+<tr>
+<th scope="row">Pepperoni</th>
+<td>$10</td>
+<td>$12</td>
+</tr>
+</tbody>
+</table>
+         
+         <h4>A complex data table using header and id attributes</h4>
+         
+         <pre><code class="language-html">&lt;table border="1" summary="Pizza toppings are listed in the first two rows. Sizes of pizza are listed in the first column. Cross reference them to determine the price of each topping."&gt;
+  &lt;caption&gt;Topping Prices&lt;/caption&gt;
+  &lt;tr&gt;
+    &lt;th scope="col"&gt;&amp;nbsp;&lt;/th&gt;
+    &lt;th colspan="3" scope="col" id="meat"&gt;Meat Toppings&lt;/th&gt;
+    &lt;th colspan="3" scope="col" id="veg"&gt;Vegetable Toppings&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;th scope="col"&gt;&amp;nbsp;&lt;/th&gt;
+    &lt;th scope="col" id="pep"&gt;Pepperoni&lt;/th&gt;
+    &lt;th scope="col" id="sa"&gt;Sausage&lt;/th&gt;
+    &lt;th scope="col" id="bac"&gt;Bacon&lt;/th&gt;
+    &lt;th scope="col" id="on"&gt;Onion&lt;/th&gt;
+    &lt;th scope="col" id="ol"&gt;Olives&lt;/th&gt;
+    &lt;th scope="col" id="tom"&gt;Tomato&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;th scope="row" id="sm"&gt;Small&lt;/th&gt;
+    &lt;td headers="meat pep sm"&gt;$0.80&lt;/td&gt;
+    &lt;td headers="meat sa sm"&gt;$0.80&lt;/td&gt;
+    &lt;td headers="meat bac sm"&gt;$1.00&lt;/td&gt;
+    &lt;td headers="veg on sm"&gt;$0.60&lt;/td&gt;
+    &lt;td headers="veg ol sm"&gt;$0.80&lt;/td&gt;
+    &lt;td headers="veg tom sm"&gt;$0.60&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;th scope="row" id="med"&gt;Medium&lt;/th&gt;
+    &lt;td headers="meat pep med"&gt;$1.00&lt;/td&gt;
+    &lt;td headers="meat sa med"&gt;$1.00&lt;/td&gt;
+    &lt;td headers="meat bac med"&gt;$1.20&lt;/td&gt;
+    &lt;td headers="veg on med"&gt;$0.80&lt;/td&gt;
+    &lt;td headers="veg ol med"&gt;$1.00&lt;/td&gt;
+    &lt;td headers="veg tom med"&gt;$0.80&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+         
+         <table border="1">
+<tbody>
+<tr>
+<td scope="col"></td>
+<th id="meat" colspan="3" scope="col">Meat Toppings</th>
+<th id="veg" colspan="3" scope="col">Vegetable Toppings</th>
+</tr>
+<tr>
+<td scope="col"></td>
+<th id="pep" scope="col">Pepperoni</th>
+<th id="sa" scope="col">Sausage</th>
+<th id="bac" scope="col">Bacon</th>
+<th id="on" scope="col">Onion</th>
+<th id="ol" scope="col">Olives</th>
+<th id="tom" scope="col">Tomato</th>
+</tr>
+<tr>
+<th id="sm" scope="row">Small</th>
+<td headers="meat pep sm">$0.80</td>
+<td headers="meat sa sm">$0.80</td>
+<td headers="meat bac sm">$1.00</td>
+<td headers="veg on sm">$0.60</td>
+<td headers="veg ol sm">$0.80</td>
+<td headers="veg tom sm">$0.60</td>
+</tr>
+<tr>
+<th id="med" scope="row">Medium</th>
+<td headers="meat pep med">$1.00</td>
+<td headers="meat sa med">$1.00</td>
+<td headers="meat bac med">$1.20</td>
+<td headers="veg on med">$0.80</td>
+<td headers="veg ol med">$1.00</td>
+<td headers="veg tom med">$0.80</td>
+</tr>
+</tbody>
+</table>
+
+<p>For more on accessibility, view the <a href="https://codepen.io/kmp/pen/XWXmJgV?editors=1000" target="_blank">CodePen guide</a>.</p>
+
+</div>

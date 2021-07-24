@@ -1,0 +1,141 @@
+---
+layout: default
+title: "Style Guide"
+type: "guide"
+---
+
+<style>
+		.font-awesome-demo {
+		position: relative;
+		width: 200px;
+		height: 200px;
+    background: #e6e6e6;
+    
+	}
+
+	.font-awesome-demo span {
+		font: normal normal normal 14px/1 'Font Awesome 5 Free';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, 50%);
+      display: block;
+      width: 40px;
+      height: 40px;
+      background: white;
+      border-radius: 50%;
+      color: red;
+      font-size: 22px;
+	}
+
+		.font-awesome-demo span:after {
+			position: absolute;
+        top: 0;
+        left: 50%;
+        //content: "Boom";
+       //content: $fa-var-search;
+       content: "\f358";
+		}
+</style>
+
+<div class="inner panel-padding">
+	<h1 class="heading">This is a main title</h1>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At hic impedit deleniti quisquam, dolorum, assumenda nam minus culpa laboriosam laborum explicabo aut animi consequuntur excepturi, provident unde blanditiis. Amet, maiores.</p>
+	<h2 class="heading">This is a secondary title</h2>
+
+	<a href="#nogo" class="btn btn--primary">Call to action</a>
+	<a href="#nogo" class="btn btn--secondary">Call to action</a>
+
+		<hr>
+
+		<h2 class="heading">Using font awesome icons as variables</h2>
+
+		<div class="font-awesome-demo">
+			<span></span>
+		</div>
+
+		<h2 class="heading">Using font awesome in the HTML</h2>
+
+		<div class="font-awesome-demo">
+			<i class="far fa-arrow-alt-circle-down"></i>
+		</div>
+
+
+	<h2 class="heading">Better text links for Screen Readers</h2>
+		<p>The link below is not very descriptive, so to help screen readers, add a span that is hidden on the page . A screen reader will read, "Read more about Manchester"</p>
+	<p><a href="#" title="Read more">Read more <span class="sr-only">about Manchester</span></a></p>
+
+	<hr>
+
+	<!-- Embed youtube videos without loading in the CSS-->
+	<p>Most basic YouTube embed which uses the thumnbail from YouTube</p>
+	<div class="lazyframe" data-src="https://www.youtube.com/embed/6hgVihWjK2c" data-vendor="youtube">
+	</div> 
+
+	<!-- Custom Image and title-->
+	<p>A custom YouTube embed with custom background image and title</p>
+	<!-- https://github.com/vb/lazyframe-->
+	<div class="lazyframe" data-src="https://www.youtube.com/embed/NY-KOE2cfdA" data-vendor="youtube" data-title="Custom title" data-thumbnail="https://placekitten.com/500/281"></div>
+	<hr>
+	<p>For an example to do a video hero with a modal and embed of an iframe look at Access Legal Video Hero - <a href="http://accesslegal.kmpassociates.co.uk/pages/zone-single.html">http://accesslegal.kmpassociates.co.uk/pages/zone-single.html</a></p>
+
+	<hr>
+
+	{% include form.html %}
+</div>
+
+<div class="inner panel-padding">
+	<h3 class="heading">Lazy Loading</h3>
+
+	 <img class="lazy" data-src="http://jquery.eisbehr.de/lazy/images/1.jpg" />
+	 <img class="lazy" data-src="http://jquery.eisbehr.de/lazy/images/2.jpg" />
+	 <img class="lazy" data-src="http://jquery.eisbehr.de/lazy/images/3.jpg" />
+	 <img class="lazy" data-src="http://jquery.eisbehr.de/lazy/images/4.jpg" />
+	 <img class="lazy" data-src="http://jquery.eisbehr.de/lazy/images/5.jpg" />
+	 <img class="lazy" data-src="http://jquery.eisbehr.de/lazy/images/6.jpg" />
+	 <img class="lazy" data-src="http://jquery.eisbehr.de/lazy/images/7.jpg" />
+	 <img class="lazy" data-src="http://jquery.eisbehr.de/lazy/images/8.jpg" />
+	 <img class="lazy" data-src="http://jquery.eisbehr.de/lazy/images/9.jpg" />
+	 <img class="lazy" data-src="http://jquery.eisbehr.de/lazy/images/0.jpg" />
+</div>
+
+<div class="inner panel-padding">
+	<h3 class="heading">CSS Grid using Grid Area</h3>
+
+	<div class="css-grid">
+	      <div class="left-col">Main</div>
+	      <aside class="right-col">sidebar</aside>
+	      <div class="full-col">full width</div>
+	</div>
+</div>
+<div class="inner panel-padding">
+	<h3 class="heading">CSS Grid using Line Numbers</h3>
+	<div class="css-grid-alt">
+	      <div class="left-col">Main</div>
+	      <aside class="right-col">sidebar</aside>
+	      <div class="full-col">full width</div>
+	</div>
+</div>
+
+<div class="inner panel-padding">
+	<h3 class="heading">CSS Grid using Flexbox</h3>
+    <div class="css-grid-flexbox">    
+      <div class="card">
+        <h1>Entertainment</h1>
+        <p>Hundreds of VR games and films have been released already. <a href="#">Oculus Story Studio</a> is one example of a company producing VR films.</p>
+        <a class="btn" href="#">Learn more</a>
+      </div>
+      
+      <div class="card">
+        <h1>Architectural Visualization</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam totam libero repellendus cupiditate illum, fuga ducimus maxime? Optio rem tempore, aspernatur illo porro perspiciatis inventore enim asperiores, autem sed ducimus.These experiences allow you to explore and interact with buildings and products in virtual reality. <a href="#">IKEA VR</a> is a popular example.</p>
+        <a class="btn" href="#">Learn more</a>        
+      </div>
+      
+      <div class="card"> 
+        <h1>Education</h1>
+        <p>VR allows students to visit other places and other times. For instance, the BBC produced a <a href="#">360° video</a> that allows users to see the scale of dinosaurs in stereoscopic 3D.</p>
+        <a class="btn" href="#">Learn more</a>        
+      </div> 
+           </div>
+		</div>

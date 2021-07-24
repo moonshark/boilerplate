@@ -1,0 +1,63 @@
+// Dimensions
+$palm: 320px;
+$mobile-land: 480px;
+$tablet-sml: 600px;
+$tablet-only: max-width 767px;
+$tablet: 768px;
+$desktop-sml: 1024px;
+$desktop: 1200px;
+$wide: 1400px;
+$uber: 1800px;
+
+
+/*Retina*/
+$hidpi: min-resolution 1.5dppx;
+
+$rem-base: 10;
+$rem-percentage: percentage($rem-base / 16);
+
+// Grid Padding/Sizing
+$grid-padding: 15px;
+$panel-padding: 40px;
+$gutter: 30px; 
+$original-width: 1024;
+
+// Fonts
+$font: 'IBM Plex Sans',
+serif;
+$font-alt: 'IBM Plex Sans',
+sans-serif;
+
+$font-base: $font;
+$font-headings: $font-alt;
+
+// Map for easy breakpoint editing
+$breakpoints: (
+  palm: $palm, //320px
+  mobile: $mobile-land, // 480px
+  tablet-sml: $tablet-sml, // 600px
+  tablet: $tablet, // 768px
+  desktop-sml: $desktop-sml, // 1024px
+  desktop: $desktop, // 1200px
+  wide: $wide, //1 400px
+  uber: $uber // 1800px
+);
+
+$h1-font-sizes: (
+  null  : (2.8rem, 1.2),
+  desktop-sml: 6rem, // when no line height shown, takes the previous value
+);
+
+
+// Font Weights
+$light: 300;
+$reg: 400;
+$bold: 700;
+
+// Sprite 2 Size
+$width-2x: 64px;
+$height-2x: 64px;
+
+$sprite-2x-size: ($width-2x/2) ($height-2x/2);
+
+$select-height: 4rem;

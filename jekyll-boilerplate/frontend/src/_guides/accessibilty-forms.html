@@ -1,0 +1,128 @@
+---
+layout: guide
+title: "Accessibility: Forms"
+type: "guide"
+---
+
+
+<div class="inner panel-padding">
+
+  <h3>Important</h3>
+<pre><code class="language-html">&lt;!-- This must be present somewhere for it to be compliant--&gt;
+&lt;p&gt;Required fields are indicated with *&lt;/p&gt;</code></pre>
+         
+         
+<pre><code class="language-html">&lt;!-- If more than one form, make sure to use aria-labelledby --&gt;
+&lt;form action=&quot;&quot; data-role=&quot;form-wrapper&quot; class=&quot;form&quot;&gt;</code></pre>
+
+<p>Any descriptive text should be best <strong>outside</strong> of the form tag.</p>
+
+<pre><code class="language-html">&lt;p&gt;Please fill in all of the fields of the form&lt;/p&gt;
+&lt;form action=&quot;&quot;&gt;
+    &lt;!-- Form content--&gt;
+&lt;/form&gt;</code></pre>
+
+<h4>Simple Input Group</h4>        
+<p>This has most of the tags that will be needed, showing required fields and also showing an error message.</p>
+
+<p>Some JS can be written so when the forms throw an error this adds an aria attribute to let users with screenreaders know there is an issue.</p>
+
+<pre><code class="language-html">&lt;div class=&quot;form__row&quot;&gt;
+      &lt;label for=&quot;name&quot;&gt;Name *&lt;/label&gt;
+      &lt;input type=&quot;text&quot; placeholder=&quot;Full name&quot; id=&quot;name&quot; required aria-describedby=&quot;rule error&quot; /&gt;
+      &lt;span id=&quot;rule&quot; style=&quot;padding: 5px; display: block;&quot;&gt;The name must be over 3 characters long&lt;/span&gt;
+      &lt;p id=&quot;error&quot; role=&quot;alert&quot; class=&quot;error&quot;&gt;Please enter your name&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+
+<p><strong>Adding <code>required</code> will use the JS validation of the field when checking the form. if you do not want this, then instead use: <code>aria-required="true"</code></strong></p>
+
+  <h4>No labels</h4>
+  
+<p>All inputs need a label to go with them, linking the <code>for</code> with the <code>id</code> of the field. If, for whatever reason there is no label then you would use <code>arial-label</code>.</p>
+
+<pre><code class="language-html">&lt;input type=&quot;text&quot; name=&quot;name&quot; placeholder=&quot;What's your name?&quot; aria-label=&quot;What's your name?&quot; required /&gt;</code></pre>
+
+<p>Another option would be to add a label, but hide it using a CSS class which is only for screen readers, like so:</p>
+
+<pre><code class="language-html">&lt;!-- Label hidden to user, still in for screen readers --&gt;
+&lt;label for=&quot;name&quot; class=&quot;visuallyhidden&quot;&gt;What is your name? *&lt;/label&gt;
+&lt;input type=&quot;text&quot; id=&quot;name&quot; placeholder=&quot;Full name&quot;  required&gt;</code></pre>
+
+
+<h4>Select Dropdown</h4>
+   
+<pre><code class="language-html">&lt;div class=&quot;form__row&quot;&gt;
+        &lt;label for=&quot;interestedIn&quot;&gt;Interested in:&lt;/label&gt;
+         &lt;select class=&quot;selectbox&quot; id=&quot;interestedIn&quot; data-placeholder=&quot;Please choose below&quot;&gt;
+           &lt;!-- A blank option tag must be present to show the placeholder--&gt;
+           &lt;option&gt;&lt;/option&gt;
+           &lt;option value=&quot;1&quot;&gt;1&lt;/option&gt;
+           &lt;option value=&quot;2&quot;&gt;2&lt;/option&gt;
+           &lt;option value=&quot;3&quot;&gt;3&lt;/option&gt;
+         &lt;/select&gt;
+      &lt;/div&gt;</code></pre>
+
+      <h4>Radio/Checkboxes</h4>
+       
+<pre><code class="language-html">&lt;!-- Single Checkbox with Label --&gt;
+&lt;div class=&quot;form__row&quot;&gt;
+        &lt;div class=&quot;checkbox-wrap&quot;&gt;
+          &lt;input id=&quot;issues&quot; type=&quot;checkbox&quot; value=&quot;no-issues&quot;&gt;
+          &lt;label for=&quot;issues&quot;&gt;There are no issues&lt;/label&gt;
+        &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+         
+<p>To use multiple radio and checkboxes then please see below regarding using a <code>fieldset</code>.</p>
+
+<h4>Fieldset, Legend</h4>
+<p>You can split forms into sections, by using <code>fieldset</code> and then a <code>legend</code> to name the section, useful for screen readers. Do not use too much, only in obvious section when needed.</p>
+         
+<pre><code class="language-html">&lt;form action=&quot;&quot;&gt;
+    &lt;fieldset&gt;
+      &lt;legend&gt;Your Details&lt;/legend&gt;
+      &lt;!-- Content--&gt;
+    &lt;/fieldset&gt;
+    &lt;fieldset&gt;
+      &lt;legend&gt;Booking Details&lt;/legend&gt;
+      &lt;!-- Content--&gt;
+    &lt;/fieldset&gt;
+  &lt;/form&gt;</code></pre>
+         
+         <p>** Fieldset and legend should only be used when a higher-level label is necessary. Single checkboxes or basic radio buttons that make sense from their labels alone do not require fieldset and legend.</p>
+         
+<pre><code class="language-html">&lt;div class=&quot;form__row&quot;&gt;
+        &lt;fieldset&gt;
+          &lt;legend&gt;Payment Method&lt;/legend&gt;
+          &lt;div class=&quot;radio-wrap&quot;&gt;
+            &lt;input id=&quot;cash&quot; type=&quot;radio&quot; name=&quot;payment&quot; value=&quot;cash&quot; /&gt;
+            &lt;label for=&quot;cash&quot;&gt;&lt;span&gt;&lt;/span&gt;Cash&lt;/label&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;radio-wrap&quot;&gt;
+            &lt;input id=&quot;check&quot; type=&quot;radio&quot; name=&quot;payment&quot; value=&quot;check&quot; /&gt;
+            &lt;label for=&quot;check&quot;&gt;&lt;span&gt;&lt;/span&gt;Check&lt;/label&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;radio-wrap&quot;&gt;
+            &lt;input id=&quot;credit&quot; type=&quot;radio&quot; name=&quot;payment&quot; value=&quot;credit&quot; /&gt;
+            &lt;label for=&quot;credit&quot;&gt;&lt;span&gt;&lt;/span&gt;Credit Card&lt;/label&gt;
+          &lt;/div&gt;
+        &lt;/fieldset&gt;
+      &lt;/div&gt;</code></pre>
+
+<pre><code class="language-html">&lt;div class=&quot;form__row&quot;&gt;
+        &lt;fieldset&gt;
+          &lt;legend&gt;What day of the week?&lt;/legend&gt;
+          &lt;div class=&quot;checkbox-wrap&quot;&gt;
+            &lt;input id=&quot;monday&quot; type=&quot;checkbox&quot; value=&quot;monday&quot; name=&quot;dayofweek&quot; /&gt;
+            &lt;label for=&quot;monday&quot;&gt;&lt;span&gt;&lt;/span&gt;Monday&lt;/label&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;checkbox-wrap&quot;&gt;
+            &lt;input id=&quot;tuesday&quot; type=&quot;checkbox&quot; value=&quot;tuesday&quot; name=&quot;dayofweek&quot; /&gt;
+            &lt;label for=&quot;tuesday&quot;&gt;&lt;span&gt;&lt;/span&gt;Tuesday&lt;/label&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;checkbox-wrap&quot;&gt;
+            &lt;input id=&quot;wednesday&quot; type=&quot;checkbox&quot; value=&quot;wednesday&quot; name=&quot;dayofweek&quot; /&gt;
+            &lt;label for=&quot;wednesday&quot;&gt;&lt;span&gt;&lt;/span&gt;Wednesday&lt;/label&gt;
+          &lt;/div&gt;
+        &lt;/fieldset&gt;
+      &lt;/div&gt;</code></pre>
+</div>

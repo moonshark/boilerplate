@@ -1,0 +1,56 @@
+---
+layout: index-sheet
+---
+
+<div class="index-sheet">
+	<h1>Index</h1>
+<h2>Example Pages</h2>
+	<p>These are examples of how the pages will look with components added to show what they look like in-situ.</p>
+	<ul>
+	{% for page in site.pages %}
+		{% if page.type == 'example' %}
+			<li><a href="{{ site.baseurl }}{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a></li>
+		{% endif %}
+	{% endfor %}
+	</ul>
+
+
+	<h2>Widgets</h2>
+	<p>A widget is an isolated peice of functionality which is hard-baked onto the page.</p>
+	<ul>
+	{% for page in site.pages %}
+		{% if page.type == 'widget' %}
+			<li><a href="{{ site.baseurl }}{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a></li>
+		{% endif %}
+	{% endfor %}
+	</ul>
+
+	<h2>Components</h2>
+	<p>A content author should be able to place components anywhere within the placeholder zone(s) of a page.</p>
+	<ul>
+	{% for page in site.pages %}
+		{% if page.type == 'component' %}
+			<li><a href="{{ site.baseurl }}{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a></li>
+		{% endif %}
+	{% endfor %}
+	</ul>
+
+		<h2>Guides</h2>
+	<ul>
+	{% for page in site.pages %}
+		{% if page.type == 'guide' %}
+			<li><a href="{{ site.baseurl }}{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a></li>
+		{% endif %}
+	{% endfor %}
+	</ul>
+
+		<h2>Pages - for BE Only</h2>
+	<p>These are the page types that a content author should be able to create in the CMS.</p>
+	<ul>
+	{% for page in site.pages %}
+		{% if page.type == 'page' %}
+			<li><a href="{{ site.baseurl }}{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a></li>
+		{% endif %}
+	{% endfor %}
+	</ul>
+</div>

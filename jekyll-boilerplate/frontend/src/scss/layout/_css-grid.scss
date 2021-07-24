@@ -1,0 +1,106 @@
+/* ===================================== 
+   Page Styles
+======================================== */
+
+.css-grid > *{
+  padding: 0.85em;
+  background: #ccc;
+}
+
+.css-grid-alt > * {
+  padding: 0.85em;
+  background: #cfcf;
+}
+
+/* ===================================== 
+   Grid Layout
+======================================== */
+
+.left-col {
+  grid-area: copy;
+}
+
+.right-col {
+  grid-area: sidebar;
+}
+
+.full-col {
+  grid-area: full;
+}
+
+// - https://codepen.io/kmp/pen/OQeaVN
+.css-grid {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+ // grid-template-rows: 100px minmax(200px, 1fr); 
+  grid-auto-rows: minmax(150px, auto); 
+  grid-gap: 10px; // gap between elements
+  grid-template-areas: // this is needed
+    "copy" // each string is a col and each line is a new row
+    "sidebar"
+    "full";
+
+    @include breakpoint($tablet) {
+      grid-template-columns: 2fr 1fr;
+      grid-template-areas: // this is needed
+        "copy sidebar" // each string is a col and each line is a new row
+        "full full";
+    }
+}
+
+
+
+.css-grid-alt {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+ grid-template-rows: 100px minmax(200px, 1fr); 
+  grid-gap: 10px; // gap between elements
+
+    .full-col {
+     grid-row: 2 / -1;  // 2nd row to bottom
+     grid-column: 1 / -1; // far left to far right
+   }
+
+   .left-col {
+    grid-column: 1 / 2; // left to 2nd line
+   }
+
+   .right-col {
+    grid-column: 2 / -1; // 2nd line to far right
+   }
+
+    .left-col,
+    .right-col {
+      grid-row: 1 / 2; // 1st row to 2nd row
+    }
+}
+
+
+
+/* ===================================== 
+   Grid & Flexbox Layout
+======================================== */
+
+.css-grid-flexbox {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-gap: 20px;
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5em 1em;
+    border: 1px solid #e1e1e1;
+  }
+
+  .btn {
+    margin-top: auto;
+  }
+}
+
+
+
+

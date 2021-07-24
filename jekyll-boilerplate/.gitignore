@@ -1,0 +1,34 @@
+# Frontend #
+
+.DS_Store
+frontend/bower_components
+frontend/node_modules
+**/.sass-cache/
+frontend/compiled/
+frontend/src/images/sprite.png
+frontend/src/images/sprite-2x.png
+frontend/src/scss/_sprite.scss
+frontend/src/scss/_sprite-2x.scss
+frontend/src/scss/_base64.scss
+frontend/src/scss/_bower.scss
+**/assemble/data/context/
+frontend/src/images/svg/stripped/
+.vscode
+
+### All .NET projects ###
+Thumbs.db
+**/bin/
+**/obj/
+*.csproj.user
+
+### Sitecore Projects ###
+
+**/App_Data/MediaCache/
+**/data/diagnostics/
+**/data/indexes/
+**/data/logs/
+**/data/packages/
+**/data/Submit Queue/
+**/data/viewstate/
+**/temp/
+**/upload/

@@ -1,0 +1,303 @@
+// Form elements 100% width then inline
+
+input[type="text"],
+input[type="search"],
+input[type="email"],
+input[type="tel"] {
+    height: 40px;
+    line-height: 40px;
+    border-radius: 3px;
+    border: 1px solid $keyline;
+    font-size: 1.6rem;
+    padding-left: 1rem;
+    display: block;
+    width: 100%;
+    color: $black; 
+    background: $white;
+    // &:focus {
+    //     box-shadow: none;
+    //     outline: none;
+    // }
+}
+
+label {
+    font-size: 1.6rem;
+    margin-bottom: .5rem;
+    display: block;
+
+    input {
+        margin-top: .5rem;
+    }
+}
+
+legend {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+    display: block;
+}
+
+textarea {
+    border-radius: 3px;
+    border: 1px solid $keyline;
+    font-size: 1.6rem;
+    padding: 1rem;
+    display: block;
+    width: 100%;
+    color: $black;
+    background: $white;
+
+    &:focus {
+        box-shadow: none;
+        outline: none;
+    }
+}
+
+// https://webdesign.tutsplus.com/tutorials/how-to-make-custom-accessible-checkboxes-and-radio-buttons--cms-32074
+// https://codepen.io/tutsplus/pen/XxBqwz
+// https://codepen.io/tutsplus/pen/MPBVGd
+
+// accessible
+.checkbox-wrap {
+    margin-bottom: 1.5rem;
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+
+    label {
+        position: relative;
+        padding-left: 25px;
+    }
+
+    input {
+        height: 19px;
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        width: 18px;
+    }
+
+    input+label::before {
+        // border: 1px solid;
+        content: "";
+        height: 19px;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 18px;
+        background: url("/assets/images/checkbox.png") no-repeat 0 0;
+    }
+
+    input+label::after {
+        content: "";
+        opacity: 0;
+        //     background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/check.svg");
+        background: url("/assets/images/checkbox-checked.png") no-repeat 0 0;
+        background-repeat: no-repeat;
+        height: 20px;
+        width: 20px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    input:checked+label::after {
+        opacity: 1;
+    }
+
+    input:focus+label::before {
+        box-shadow: 0 0 0 2px #005fcc;
+        outline: 2px solid transparent;
+        
+        /* For Windows high contrast mode. */
+    }
+}
+
+// accessible radio buttons
+
+.radio-wrap {
+    margin-bottom: 1.5rem;
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+
+    label {
+        position: relative;
+        padding-left: 25px;
+    }
+
+    input {
+        height: 19px;
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        width: 18px;
+    }
+
+    input+label::before {
+        // border: 1px solid;
+        content: "";
+        height: 19px;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 19px;
+        // border-radius: 50%;
+        background: url("/assets/images/radio-btn.png") no-repeat 0 0;
+    }
+
+    input+label::after {
+        content: "";
+        opacity: 0;
+        // border: 4px solid;
+        // border-radius: 50%;
+        position: absolute;
+        // left: .6rem;
+        // top: .6rem;
+        transition: opacity 0.2s ease-in-out;
+        // content: "";
+        // opacity: 0;
+        // //     background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/check.svg");
+        background: url("/assets/images/radio-btn-selected.png") no-repeat 0 0;
+        background-repeat: no-repeat;
+        height: 20px;
+         width: 20px;
+        // position: absolute;
+        left: 0;
+        top: 0;
+        // transition: opacity 0.2s ease-in-out;
+    }
+
+    input:checked+label::after {
+        opacity: 1;
+    }
+
+    input:focus+label::before {
+        box-shadow: 0 0 0 2px #005fcc;
+        outline: 2px solid transparent;
+        border-radius: 50%;
+        border-radius: 50%;
+        width: 15px;
+        height: 15px;
+        /* For Windows high contrast mode. */
+    }
+}
+
+.form__row {
+    @extend .cf;
+    position: relative;
+    margin-bottom: 2rem;
+
+    .error {
+        display: block;
+        margin-top: 5px;
+        background: red;
+        color: white;
+        padding: 5px;
+        font-size: 14px;
+    }
+}
+
+// .form__row {
+//     @extend .cf;
+//     position: relative;
+//     margin-bottom: 2rem;
+//     &.radio,
+//     &.checkbox {
+//         position: relative;
+//         text-align: left;
+//         padding: 10px 0;
+//         label {
+//             position: static;
+//             display: inline-block;
+//             width: auto;
+//             span {
+//                 margin-right: 10px;
+//                 position: relative;
+//                 top: 2px;
+//                 width: 15px;
+//                 height: 15px;
+//                 display: inline-block;
+//             }
+//         }
+//         input {
+//             // display: none;
+//             // visibility: hidden;
+//             // float: none;
+//             height: 40px;
+//             left: 0;
+//             opacity: 0;
+//             position: absolute;
+//             top: 0;
+//             width: 40px;
+
+//             &:checked+label::after {
+//                  opacity: 1;
+//              }
+//         }
+//     }
+//     &.radio {
+//         input[type="radio"]:checked + label span {
+//             background: url("../images/radio-btn-selected.png") no-repeat 0 0;
+//         }
+//         label {
+//             span {
+//                 background: url("../images/radio-btn.png") no-repeat 0 0;
+//             }
+//         }
+//     }
+//     // &.checkbox {
+//         // input[type="checkbox"]:checked + label span {
+//         //     background: url("../images/checkbox-checked.png") no-repeat 0 0;
+//         // }
+
+//     //     input[type="checkbox"]:focus+label span {
+//     //   //      background: url("../images/checkbox-checked.png") no-repeat 0 0;
+//     //     background: red;
+//     //     }
+        
+
+//         // label {
+//         //     span {
+//         //         background: url("../images/checkbox.png") no-repeat 0 0;
+//         //     }
+//         // }
+//     // }
+
+
+//     // label {
+//     //     display: none;
+//     // }
+
+// }
+
+
+// Placeholders
+
+::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: $form-placeholder;
+    font-size: 1.6rem;
+}
+
+ ::-moz-placeholder {
+    /* Firefox 19+ */
+    color: $form-placeholder;
+    font-size: 1.6rem;
+}
+
+ :-ms-input-placeholder {
+    /* IE 10+ */
+    color: $form-placeholder;
+    font-size: 1.6rem;
+}
+
+ :-moz-placeholder {
+    /* Firefox 18- */
+    color: $form-placeholder;
+    font-size: 1.6rem;
+}

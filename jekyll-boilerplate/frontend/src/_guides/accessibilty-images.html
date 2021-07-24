@@ -1,0 +1,90 @@
+---
+layout: guide
+title: "Accessibility: Images"
+type: "guide"
+---
+
+
+<div class="inner panel-padding">
+  <h2>Accessibility with Images</h2>
+
+  <p>Decide if <strong>decorative</strong> or <strong>functional</strong>. Whether you would be losing out if the image was not there.</p>
+
+          <p><strong>functional</strong> - to serve a purpose - product image, shop images, logo, social icons</p>
+
+         <p><strong>Decorative</strong> - a background, not needed, just to make it look nice.<br /><br />This example shows which are decorative images:</p>
+         
+         <img src="https://previews.dropbox.com/p/thumb/AA7MKUHkAu5sAJivKuEbCejTAc1U6YTLxiFIFL_MDHaAhe_W4CD0ZbYSrU80V0dlyNhJvViVjbMSVBj_vEz3dY9G80Sn03D5-2cVoziCmus0pOdH7L5m396k7mDEEIyy6iQHURqKmwlC07MjPZaUjZemawvyOM96KXnPHco5tOUToeUqSxnj7NOEae-6_OvuRcmrJJZJrXfe-Zg757jQtwywiXT2RR8BC3LxT-nL_6wcecwd74PAt4IxWJ1wpmzOwWzL-Jk244PQXpy0MmidPXCxaxOUVZc4ogUT_wxpTRiAp2M0sibekyCDz9SQ9F91DxOyOJ0_ONYlrKaswODN0dZltItr9AuZ5AjE0aqdrdRjpw/p.jpeg?fv_content=true&size_mode=5" alt="Decorative Image Example" style="max-width: 80%; height: auto;">
+         
+         <p>NVDA for Windows and Mac has it's own VoiceOver as standard. Test the website using the keyboard only.</p>
+
+         
+         
+         <hr>
+
+         <h3>Hide from screen readers</h3>
+
+        <p>To hide an image from screen readers, you can use <code>aria-hidden="true"</code>. This is useful for icons that do not need to be read out by a screen reader.</p>
+
+         <hr>
+
+         <h3>Decorative Image that has no meaning</h3>
+
+          <p>If it is a decorative image use <code>alt=""</code>, as it tells the screen reader we know about it and that it is not important. <strong>No alt tag is NOT THE SAME</strong>. An empty tag is a better way of showing decorative</p>
+        
+          <pre><code class="language-html">&lt;img src=&quot;...&quot; alt=&quot;&quot;&gt;</code></pre>
+
+          <hr>
+
+         
+         <h3>Show to only screen readers</h3>
+         <p>If you want to hide an image but only show it for screen readers, then you would just use the following CSS:</p>
+
+<pre><code class="language-css">.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}</code></pre>
+
+  <hr>
+
+  <h3>Background Images for Screen readers</h3>
+  <p>If the image cannot be done using an image tag then a background image will have to do. You can do this like this:</p>
+         
+<pre><code class="language-html">&lt;div class=&quot;hero&quot; style=&quot;background-image: url('')&quot; aria-label=&quot;Describe an image if needed&quot;&gt;&lt;/div&gt;</code></pre>
+  
+<p>However, if there was some text within this div as well then a screen reader would read out the text but not the image description. So, you would need to add a separate span or div and make it like this:</p>
+         
+<pre><code class="language-html">&lt;div class=&quot;hero&quot;&gt;
+  &lt;h1&gt;Visit Glasgow Airport&lt;/h1&gt;
+  &lt;span style=&quot;background-image: url('')&quot; aria-label=&quot;Describe an image if needed&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+
+<hr>
+
+<h3>Alt Text and what to include</h3>
+
+        <h4>A long Alt Text</h4>
+         <p>If the image has a lot of text, then it is a good idea to add the full description, but not within the alt text. First state <em>what</em> the image is which is enough to understand -<strong>Native App Development, An infographic</strong>, and then get the rest of the text from the image, as shown below:</p>
+
+         <img src="https://previews.dropbox.com/p/thumb/AA5SFgChEkikYAg38kmjM7gsb3k6o145mBIHZerdf7bpC-WOBUULk_DDyJBxWPJYLPpOlnEP4kuVzYaB6TXwncuOqp5DZfMljsxPXJMb-7O0VI1dTQqyloyfFV6eErtCPOzqRp3Sugb1TRPErRi9rAz6qxHzwnec1FHrigj0oOEY6hMEzU-udOQtv3c9P80SIChnfORaxDl2DOULc2w-BBm-lMHPF5N65GL91980pY5pUapYiR4L_7DoSFvOlpbguzID0RkE57IXx9MnAnpKpq2EQISpfMLBj9mKsTjHyEzLu_4D8Sk3HV8Zb5fxUphGfjtenRU-9VjgdUA03bN8UcnNqW0ImFojwZqd0LzfflovCw/p.png?fv_content=true&size_mode=5" alt="Native App Development, An infographic" style="max-width: 80%; height: auto;">
+
+         <p>"<strong>Native App Development, An infographic. Native app development has three sections. 62% Usage: Android: Lorem ipsum dolor sit amet consectetur adipiscing elit. 33% Usage: iOS. Suspendissse maximus egestas metus ut vulputate. 5%. Usage: Windows. Donec lacinia augue vel pharetra dapibus.</strong>". </p>
+
+         
+
+<pre><code class="language-html">&lt;img src=&quot;...&quot; alt=&quot;Native App Development, An infographic.&quot;&gt;
+&lt;p class=&quot;sr-only&quot;&gt;Native App Development, An infographic. Native app development has three sections. 62% Usage: Android: Lorem ipsum dolor sit amet consectetur adipiscing elit. 33% Usage: iOS. Suspendissse maximus egestas metus ut vulputate. 5%. Usage: Windows. Donec lacinia augue vel pharetra dapibus.&lt;/p&gt;</code></pre>
+         
+<p>This is fine, but not always will the content have the text below the image. A better way is like this:</p>
+
+<pre><code class="language-html">&lt;img src=&quot;...&quot; alt=&quot;Native App Development, An infographic.&quot; aria-describedby=&quot;my-description&quot;&gt;
+&lt;p id=&quot;my-description&quot;&gt;Native App Development, An infographic. Native app development has three sections. 62% Usage: Android: Lorem ipsum dolor sit amet consectetur adipiscing elit. 33% Usage: iOS. Suspendissse maximus egestas metus ut vulputate. 5%. Usage: Windows. Donec lacinia augue vel pharetra dapibus.&lt;/p&gt;</code></pre> 
+
+<p>For more on accessibility, view the <a href="https://codepen.io/kmp/pen/XWXmJgV?editors=1000" target="_blank">CodePen guide</a>.</p>
+</div>

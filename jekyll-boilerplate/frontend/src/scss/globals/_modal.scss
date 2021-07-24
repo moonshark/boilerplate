@@ -1,0 +1,168 @@
+.has-overlay {
+    overflow: hidden;
+    height: auto;
+
+    >body {
+        height: 100%;
+        overflow: hidden;
+    }
+}
+
+
+.modal {
+    //transform: translate(0, 100%);
+    transform: translate(0, 100%) translate3d(0, 100%, 0);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9998;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    display: none\9;
+
+    &--full {
+        .modal-inner {
+            height: 100vh;
+            width: 100%;
+            max-width: none;
+        }
+        .modal-content {
+            height: 100vh;
+            max-height: none;
+        }
+    }
+
+
+}
+
+.modal:target,
+.is-active.modal {
+    transform: translate(0, 0);
+    width: auto;
+    height: auto;
+    opacity: 1;
+}
+
+.is-active.modal {
+    display: block\9;
+    height: 100% \9;
+    width: 100% \9;
+}
+
+.modal:target,
+.is-active.modal {
+    display: block\9;
+}
+
+.modal-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    width: 95%;
+    max-width: 66rem; //  overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    background: #FFFFFF;
+    // border: 1px solid #DEDEDE;
+    // box-shadow: 0 0 20px 0 rgba(33, 51, 104, 0.70);
+    transition: max-width .25s linear, margin-left .125s linear;
+    overflow-y: auto;
+
+    .icon-close {
+        // position: absolute;
+        // top: 1.5rem;
+        // right: 1.5rem;
+        // display: block;
+        // font-size: 3.5rem;
+        position: absolute;
+        z-index: 15;
+        right: 1rem;
+        top: 1rem;
+        width: 25px;
+        height: 25px;
+        text-indent: -9999em;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            top: 50%;
+            left: 50%;
+            height: 2px;
+            margin-left: -10px;
+            background: #000;
+            transform: rotate(45deg);
+            }
+
+            &::after {
+                transform: rotate(-45deg);
+            }
+    }
+}
+
+
+.modal-content {
+    position: relative; //max-height: 400px;
+    max-height: 95vh;
+    overflow-x: hidden;
+    overflow-y: auto; //overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    padding: 4rem 2rem;
+
+    @include breakpoint($tablet-sml) {
+        padding: 4rem 5rem;
+    }
+
+    >* {
+        max-width: 100%;
+    }
+
+}
+
+
+.modal-close {
+    display: block;
+    height: 1px;
+    clip: rect(0 0 0 0);
+    margin: -1px;
+    overflow: hidden;
+    text-indent: -9999px;
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 10;
+        background: #000;
+        // opacity: .75;
+    }
+}
+
+// This is used as the modal closes via a button within the modal and not the actual close buttons
+.modal-closed {
+    width: 0px !important;
+    height: 0px !important;
+    opacity: 0 !important;
+}
+
+.modal--video {
+    .modal-inner {
+      overflow: visible;
+        max-width: 1400px;
+        border: none;
+        margin-top: 30px;
+    }
+    .modal-content {
+        padding: 0;
+        overflow: hidden;
+    }
+}

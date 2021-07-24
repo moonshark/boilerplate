@@ -1,0 +1,27 @@
+<!-- This is for local only, the development file's are commented below -->
+<!-- Files copied from Bower_components-->
+<script src="{{ site.baseurl }}/assets/js/bower/jquery.js"></script>
+<script src="{{ site.baseurl }}/assets/js/bower/jquery-ui.js"></script>
+<script src="{{ site.baseurl }}/assets/js/bower/velocity.js"></script>
+<script src="{{ site.baseurl }}/assets/js/bower/velocity-ui.js"></script>
+<script src="{{ site.baseurl }}/assets/js/bower/select2.js"></script>
+<script src="{{ site.baseurl }}/assets/js/bower/slick.js"></script>
+<script src="{{ site.baseurl }}/assets/js/bower/jquery.lazy.js"></script>
+<script src="{{ site.baseurl }}/assets/js/bower/jquery.matchHeight.js"></script>
+
+<!-- Libraries added not in bower-->
+<script src="{{ site.baseurl }}/assets/js/libs/modal.js"></script>
+<script src="{{ site.baseurl }}/assets/js/libs/lazyframe.min.js"></script>
+
+<!-- Main JS Files-->
+<script src="{{ site.baseurl }}/assets/js/ui.js"></script>
+
+<!-- REPLACE THE API -->
+<script>
+lazyframe('.lazyframe', {
+  apikey: 'AIzaSyCyFYQOH0VXtUmbaGeo97Nk_AjpUG9iJ1I' // this needs changing as it is using mine currently
+});
+</script>
+
+<!--  When you run grunt beBuild you get the compiled js 
+<script async src="{{ site.baseurl }}/js/all.min.js"></script>-->

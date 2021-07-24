@@ -1,0 +1,51 @@
+// Colours
+
+$black: #000;
+$white: #fff;
+// $grey-light:	#ECECEC;
+// $grey:	#9D9D9D;
+
+// Brand Colours
+// $red: #FF0000;
+// $blue: #0000FF;
+// $green: #00FF00;
+
+$colours: (
+  grey: (
+    base: #9D9D9D,
+    light: #ECECEC,
+  ),
+
+  brand: (
+    red: red,
+    blue: blue,
+    green: green
+  )
+);
+
+@function colour($colour, $tone: base) {
+  @return map-get(map-get($colours, $colour), $tone);
+}
+
+// Colour Usage 
+$primary: $black;
+
+$btn-bg: $primary;
+$btn-color: $white;
+$cta-bg:		$primary;
+$cta-colour:		$white;
+$font-base-colour: $primary;
+$form-placeholder: colour(grey, base);
+$headings: $primary;
+$keyline: colour(grey, light);
+$panel-bg: colour(grey, light);
+$select-selected-bg: colour(brand, red);
+$select-selected-color: $black;
+$select-arrow-color: $primary;
+
+// Datepicker Variables
+$datepicker: $primary;
+$datepicker-selected: blue;
+$datepicker-gradient: -194deg,
+#155c92,
+#20366b;
