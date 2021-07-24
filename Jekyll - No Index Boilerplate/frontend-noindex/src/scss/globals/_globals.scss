@@ -1,0 +1,146 @@
+/* Grid Settings
+-------------------------*/
+
+// $panel-bg-colours:                              #fff, #000, #f4f3f2;
+
+// @for $i from 1 through length($panel-bg-colours) {
+//     .panel-bg-#{$i} {
+//         background-color: nth($panel-bg-colours, $i);
+//     }
+// }
+
+// .panel-bg-1 {background-color: #fff;}
+// .panel-bg-2 {background-color: #000;}
+// .panel-bg-3 {background-color: #f4f3f2;}
+
+.inner {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 $grid-padding;
+
+  .ie8 & {
+    min-width: 960px;
+  }
+}
+
+.panel-padding {
+  padding-top: $panel-padding;
+  padding-bottom: $panel-padding;
+
+  @include breakpoint($desktop-sml) {
+    padding-top: $panel-padding * 2.5;
+    padding-bottom: $panel-padding * 2.5;
+  }
+
+  +.panel-padding {
+    padding-top: 0;
+
+    @include breakpoint($desktop-sml) {
+      padding-top: 0;
+    }
+  }
+}
+
+.panel-padding-alt {
+  padding-top: $panel-padding / 1.5;
+  padding-bottom: $panel-padding / 1.5;
+}
+
+.panel-bg {
+  background: $panel-bg;
+}
+
+
+/* ---- Click Box ----*/
+
+/*
+<article>
+  <div class="clickBox">
+    <a href="#nogo"></a>
+    <p>bla bla</p>
+  </div>
+</article>
+*/
+
+.clickBox {
+  cursor: pointer;
+}
+
+
+
+/* Helpers
+-------------------------*/
+
+.cf:before,
+.cf:after {
+  content: " ";
+  display: table;
+}
+
+.cf:after {
+  clear: both;
+}
+
+.hide-screen {
+  @include breakpoint($tablet) {
+    display: none;
+  }
+}
+
+.hide-mobile {
+  display: none;
+
+  @include breakpoint($tablet) {
+    display: block;
+  }
+}
+
+.centre-text {
+  text-align: center;
+}
+
+hr {
+  margin: 4rem auto;
+  background: #f2f2;
+  height: 1px;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+// .visuallyhidden {
+//   border: 0;
+//   clip: rect(0 0 0 0);
+//   height: 1px;
+//   margin: -1px;
+//   overflow: hidden;
+//   padding: 0;
+//   position: absolute;
+//   width: 1px;
+// }
+
+// .visuallyhidden.focusable:active,
+// .visuallyhidden.focusable:focus {
+//   clip: auto;
+//   height: auto;
+//   margin: 0;
+//   overflow: visible;
+//   position: static;
+//   width: auto;
+// }
+
+// Screen readers only
+.sr-only {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  top: auto;
+  overflow: hidden;
+}

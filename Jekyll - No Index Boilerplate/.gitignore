@@ -1,0 +1,34 @@
+# frontend-noindex #
+
+.DS_Store
+frontend-noindex/bower_components
+frontend-noindex/node_modules
+**/.sass-cache/
+frontend-noindex/compiled/
+frontend-noindex/src/images/sprite.png
+frontend-noindex/src/images/sprite-2x.png
+frontend-noindex/src/scss/_sprite.scss
+frontend-noindex/src/scss/_sprite-2x.scss
+frontend-noindex/src/scss/_base64.scss
+frontend-noindex/src/scss/_bower.scss
+**/assemble/data/context/
+frontend-noindex/src/images/svg/stripped/
+.vscode
+
+### All .NET projects ###
+Thumbs.db
+**/bin/
+**/obj/
+*.csproj.user
+
+### Sitecore Projects ###
+
+**/App_Data/MediaCache/
+**/data/diagnostics/
+**/data/indexes/
+**/data/logs/
+**/data/packages/
+**/data/Submit Queue/
+**/data/viewstate/
+**/temp/
+**/upload/

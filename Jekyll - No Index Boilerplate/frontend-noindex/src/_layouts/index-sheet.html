@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8" />
+<title>{{ page.title }}</title>
+
+
+<!-- <meta name="robots" content="noindex, nofollow"> -->
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+
+<!-- For Windows 8 -->
+<meta name="msapplication-TileImage" content="{{ site.baseurl }}images/icons/win8.png"/>
+
+<!-- For iPad 3 -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ site.baseurl }}images/icons/apple-touch-icon-144.png" />
+<!-- For iPhone 4 -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ site.baseurl }}images/icons/apple-touch-icon-114.png" />
+<!-- For iPad 1-->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ site.baseurl }}images/icons/apple-touch-icon-72.png" />
+<!-- For iPhone 3G, iPod Touch and Android -->
+<link rel="apple-touch-icon-precomposed" href="{{ site.baseurl }}images/icons/apple-touch-icon-57.png" />
+<!-- For everything else -->
+<link rel="shortcut icon" href="{{ site.baseurl }}favicon.ico" />
+<link href="{{ site.baseurl }}css/core.css" rel="stylesheet">
+
+<!-- Google Font - Change in jekyll config -->
+<link href="https://fonts.googleapis.com/css?family={{site.font}}" rel="stylesheet">
+
+<!-- This is used for inline CSS above the fold -->
+<style type="text/css">
+    {% capture include_to_scssify %}
+      {% include index-sheet.scss %}
+    {% endcapture %}
+    {{ include_to_scssify | scssify }}
+  </style>
+
+<script src="{{ site.baseurl }}/images/svg/output/grunticon.loader.js"></script>
+<script>grunticon(["{{ site.baseurl }}images/svg/output/icons.data.svg.css", "{{ site.baseurl }}images/svg/output/icons.data.png.css", "{{ site.baseurl }}images/svg/output/icons.fallback.css"], grunticon.svgLoadedCallback);</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		{{ content }}            
+	</div> <!-- end of wrapper -->
+</body>
+</html>

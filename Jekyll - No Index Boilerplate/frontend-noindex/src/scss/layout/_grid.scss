@@ -1,0 +1,144 @@
+/* Don't edit this file directly grids are probably best applied directly to component */
+
+@lost gutter 30px;
+
+.container{
+    padding-left: $gutter;
+    padding-right: $gutter;
+    lost-utility: clearfix;
+}
+
+.content-narrow {
+    @extend .container;
+    width: 100%;
+    @include breakpoint($tablet){
+        margin: 0 auto;
+        padding-left: 0;
+        padding-right: 0;
+        width: contextualiser(620);
+    }
+}
+
+.grid {
+    @extend .container;
+    .grid{
+        padding: 0;
+    }
+    &__sixth {
+        lost-column: 1/1;
+        @include breakpoint($tablet){
+            lost-column: 1/3; 
+        }
+        @include breakpoint($desktop){
+           lost-column: 1/6; 
+        }
+    }
+    &__quarter {
+        lost-column: 1/1;
+        @include breakpoint($tablet){
+            lost-column: 1/4;
+        }
+        @include breakpoint($desktop){
+            lost-column: 1/4;
+        }
+    }
+    &__two-quarters {
+        lost-column: 1/1;
+        @include breakpoint($tablet){
+            lost-column: 2/4;
+        }
+        @include breakpoint($desktop){
+            lost-column: 2/4;
+        }
+    }
+    &__three-quarters {
+        lost-column: 1/1;
+        @include breakpoint($tablet){
+            lost-column: 3/4;
+        }
+        @include breakpoint($desktop){
+            lost-column: 3/4;
+        }
+    }
+    &__third {
+        lost-column: 1/1;
+        @include breakpoint($tablet){
+            lost-column: 1/3;
+            &--offset {
+                lost-offset: -1/3;
+            }
+        }
+    }
+    &__two-thirds {
+        lost-column: 1/1;
+        @include breakpoint($tablet){
+            lost-column: 2/3;
+            &--offset {
+                lost-offset: -2/3;
+            }
+        }
+    }
+    &__two-twelfths {
+        lost-column: 1/1;
+        @include breakpoint($tablet){
+            lost-column: 2/12;
+        }
+    }
+    &__five-twelfths {
+        lost-column: 1/1;
+        @include breakpoint($tablet){
+            lost-column: 5/12;
+        }
+    }
+    &__five-twelfths-hm {
+        lost-column: 1/2 0 0;
+        @include breakpoint($tablet){
+            lost-column: 5/12;
+        }
+    }
+    &__seven-twelfths {
+        lost-column: 1/1;
+        @include breakpoint($tablet){
+            lost-column: 7/12;
+        }
+    }
+    &__seven-twelfths-hm {
+        lost-column: 1/2 0 0;
+        @include breakpoint($tablet){
+            lost-column: 7/12;
+        }
+    }
+    &__ten-twelfths {
+        lost-column: 1/1;
+        @include breakpoint($tablet){
+            lost-column: 10/12;
+            &--offset{
+                lost-offset: -1/12;
+            }
+        }
+    }
+    &__half {
+        lost-column: 1/1;
+        @include breakpoint($tablet){
+            lost-column: 1/2;
+        }
+    }
+    &__full {
+        lost-column: 1/1;
+    }
+}
+/* Inline block grid */
+.grid-ib{
+    white-space: nowrap;
+    @include breakpoint($tablet){
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+    &__quarter{
+        @include breakpoint($tablet){
+            display: inline-block;
+            width: 25%;
+        }
+    }
+}

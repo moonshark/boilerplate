@@ -1,0 +1,358 @@
+.fl-left {
+    float: left;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-right {
+    text-align: right;
+}
+
+
+.image-link img {
+    border: none;
+    outline: 0;
+}
+
+.email-max-width {
+    max-width: 680px;
+    border-collapse: collapse; /* this may have broken it */
+}
+
+.top-strip {
+    padding: 10px;
+    text-align: right;
+    font-family: 'Open Sans', Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 14px;
+    mso-height-rule: exactly;
+    line-height: 22px;
+    color: #fff;
+}
+
+.top-strip a {
+    color: #fff;
+}
+
+.page-copy {
+    font-family: 'Open Sans', Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 14px;
+    mso-height-rule: exactly;
+    line-height: 20px;
+    color: #000000;
+    padding-top: 10px;
+}
+
+.dark-bg .page-copy {
+    color: #fff;
+}
+
+
+/* Hero Banner and Image Banner */
+
+.image-banner {
+    width: 100%;
+    max-width: 680px;
+    height: auto;
+}
+
+
+
+
+
+
+/* Used on Splitter and Spacer */
+
+.collapse-cell {
+    border-collapse: collapse;
+    line-height: 1;
+    font-size: 0;
+}
+
+
+
+
+
+
+/* Text Panel Include */
+
+.text-panel {
+    padding: 40px;
+    text-align: center;
+    font-family: 'Open Sans', Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 16px;
+    mso-height-rule: exactly;
+    line-height: 22px;
+    color: #000000;
+}
+
+.heading {
+    font-family: 'Open Sans', Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 30px;
+    mso-height-rule: exactly;
+    line-height: 35px;
+    color: #c60070;
+    margin-top: 0;
+}
+
+.heading-sml {
+    font-family: 'Open Sans', Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 25px;
+    mso-height-rule: exactly;
+    line-height: 30px;
+    color: #c60070;
+    margin: 10px 0;
+}
+
+.btn {
+    background: #F33234;
+    border: 8px solid #F33234;
+    padding: 0 10px;
+    color: #ffffff;
+    font-family: 'Open Sans', Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.1;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-weight: normal;
+    border-radius: 3px;
+    transition: all 100ms ease-in;
+}
+
+.btn:hover {
+    background: #c60070 !important;
+    border-color: #c60070 !important;
+}
+
+
+@media screen and (max-width: 480px) {
+    .text-panel {
+        padding: 30px 20px !important;
+    }
+
+    .text-panel h2 {
+        font-size: 26px !important;
+    }
+}
+
+.bg-image {
+    text-align: center;
+    background-position: center center !important;
+    background-size: cover !important;
+}
+
+.bg-image table {
+    max-width: 500px;
+    margin: auto;
+}
+
+.bg-image table td {
+    text-align: center;
+    padding: 80px 20px;
+    font-family: 'Open Sans', Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 22px;
+    mso-height-rule: exactly;
+    line-height: 30px;
+    color: #ffffff;
+}
+
+.bg-panel {
+    max-width: 550px;
+    margin: auto;
+}
+
+.bg-panel td {
+    text-align: center;
+    padding: 80px 20px;
+    font-family: 'Open Sans', Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 24px;
+    mso-height-rule: exactly;
+    line-height: 30px;
+    color: #000000;
+}
+
+.bg-panel td a {
+    color: #000000;
+    text-decoration: underline;
+}
+
+.text-col {
+    display: inline-block;
+    Margin: 0 -2px;
+    max-width: 66.66%;
+    min-width: 320px;
+    vertical-align: top;
+}
+
+.text-col h3 {
+    font-family: 'Open Sans', Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 22px;
+    mso-height-rule: exactly;
+    line-height: 26px;
+    color: #c60070;
+    margin: 0 0 10px 0;
+}
+
+.text-col__content {
+    font-family: 'Open Sans', Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 14px;
+    mso-height-rule: exactly;
+    line-height: 20px;
+    color: #555555;
+    padding: 10px 10px 0;
+    text-align: left;
+}
+
+.image-col {
+    display: inline-block;
+    Margin: 0 -2px;
+    max-width: 33.33%;
+    min-width: 160px;
+    vertical-align: top;
+    width: 100%;
+}
+
+.image-col td {
+    padding: 0 10px 10px 10px;
+}
+
+.image-col td img {
+    border: 0;
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+}
+
+.two-col {
+    display: inline-block;
+    margin: 0 -2px;
+    width: 100%;
+    min-width: 200px;
+    max-width: 330px;
+    vertical-align: top;
+}
+
+.three-col {
+    display: inline-block;
+    Margin: 0 -2px;
+    max-width: 33.33%;
+    min-width: 220px;
+    vertical-align: top;
+    width: 100%;
+}
+
+.two-col-padding,
+.three-col-padding {
+    padding: 10px 10px;
+}
+
+.two-col table,
+.three-col-padding table {
+    font-size: 14px;
+    text-align: left;
+}
+
+.two-col img,
+.three-col img {
+    border: 0;
+    width: 100%;
+    height: auto;
+}
+
+.two-col img {
+    max-width: 310px;
+}
+
+.three-col img {
+    max-width: 200px;
+}
+
+.footer-col,
+.footer-col-alt {
+    display: inline-block;
+    margin: 0 -2px;
+    width: 100%;
+    min-width: 200px;
+    max-width: 330px;
+    vertical-align: top;
+}
+
+.footer-col-padding,
+.footer-col-alt-padding {
+    padding: 10px;
+}
+
+.footer-col-padding table {
+    font-size: 14px;
+    text-align: left;
+}
+
+.footer-col-padding table td {
+    font-family: 'Open Sans', Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 13px;
+    mso-height-rule: exactly;
+    line-height: 20px;
+    color: #ffffff;
+    padding-top: 10px;
+}
+
+.footer-col-padding table td a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.footer-subscribe {
+    font-family: 'Open Sans', Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 11px;
+    mso-height-rule: exactly;
+    line-height: 20px;
+    color: #ffffff;
+    text-align: right;
+    padding-top: 10px;
+}
+
+.footer-subscribe p {
+    color: #ffffff;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.footer-subscribe p a {
+    color: #ffffff;
+}
+
+.footer-copy {
+    font-family: 'Open Sans', Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 12px;
+    mso-height-rule: exactly;
+    line-height: 18px;
+    color: #000000;
+}
+
+.footer-col a:hover {
+    text-decoration: underline !important;
+}
+
+.footer-alt-social {
+    font-family: 'Open Sans', Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 11px;
+    mso-height-rule: exactly;
+    line-height: 20px;
+    color: #000000;
+    text-align: right;
+    padding-top: 10px;
+}
+
+.footer-col-alt .collapse-cell {
+    height: 10px;
+    border-collapse: collapse;
+}
+
+.footer-logo {
+    border: 0;
+    width: 100%;
+    max-width: 131px;
+    height: auto;
+}

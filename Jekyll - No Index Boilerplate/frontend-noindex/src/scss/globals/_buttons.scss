@@ -1,0 +1,16 @@
+.btn {
+	display: inline-block;
+	text-decoration: none;
+	padding: 0 1.5rem;
+	height: 4rem;
+	line-height: 4rem;
+	border: 1px solid $btn-bg;
+	color: $btn-color;
+	background: $btn-bg;
+
+	&:hover,
+	&:focus {
+		background: darken($btn-bg, 10%);
+		color: $white;
+	}
+}

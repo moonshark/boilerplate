@@ -1,0 +1,51 @@
+
+@import "font-awesome/variables";
+@import "font-awesome/path";
+@import "font-awesome/core";
+@import "font-awesome/icons";
+
+@import "bower/all";
+
+// Import Select2 Bower Sass
+@import "bower/select2/core";
+@import "bower/breakpoint/breakpoint";
+
+// @import "breakpoint";
+@import "globals/variables";
+@import "globals/colours";
+@import "sprite";
+@import "sprite-2x";
+
+/* Site Globals - btn's, body styling etc
+-------------------------*/
+
+@import "globals/mixins";
+@import "globals/reset";
+@import "globals/typography"; 
+@import "globals/globals";
+@import "globals/form"; 
+@import "globals/buttons"; 
+@import "globals/modal";
+
+
+/* Layout/Base
+-------------------------*/
+@import "layout/footer";
+@import "layout/grid";
+@import "layout/css-grid";
+@import "layout/css-flex";
+@import "layout/header";
+
+/* Plugins
+-------------------------*/
+@import "plugins/slick";
+@import "plugins/datepicker";
+@import "plugins/select2";
+@import "plugins/lazy-frame";
+
+/* Components
+-------------------------*/
+@import "components/all";
+
+
+

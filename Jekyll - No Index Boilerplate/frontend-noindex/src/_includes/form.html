@@ -1,0 +1,37 @@
+<form action="" data-role="form-wrapper" class="form">
+  <fieldset>
+    <div class="form__row">
+        <label for="date">Date Here</label>
+<input type="text" data-field="entry-date" placeholder="Date" readonly>
+    </div>
+    <div class="form__row">
+      <label for="name">Here is a name</label>
+      <input type="text" placeholder="Full name">
+			</div>
+      <div class="form__row">
+        <label for="interestedIn">Interested in:</label>
+        <!-- <select class="custom-select" id="interestedIn" data-placeholder="What are you interested in?"> -->
+          <!-- Empty first option so placeholder works-->
+         <!-- <option value=""></option>
+          <option value="Dropdown one">Dropdown one</option>
+          <option value="Dropdown two">Dropdown Two</option>
+          <option value="Dropdown three">Dropdown Three</option>
+          <option value="Dropdown four">Dropdown Four</option>
+        </select> -->
+
+        <select class="selectbox" tabindex="-1" aria-hidden="true" data-placeholder="Please choose below">
+          <!-- A blank option tag must be present to show the placeholder-->
+          <option></option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+        </select>
+      </div>
+  </fieldset>
+</form>

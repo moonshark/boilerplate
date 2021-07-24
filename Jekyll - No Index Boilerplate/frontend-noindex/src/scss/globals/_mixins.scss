@@ -1,0 +1,395 @@
+/* -------------------------------------------------------------
+                            Mixins
+------------------------------------------------------------- */
+
+/* Retina bg image
+ *-------------------------*/
+
+@mixin retina-js($path, $ext: "jpg", $w: auto, $h: auto) {
+  $at1x_path: "#{$path}.#{$ext}";
+  $at2x_path: "#{$path}@2x.#{$ext}";
+
+  background-image: url("#{$at1x_path}");
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  
+  @include breakpoint($hidpi) {
+        background-image: url("#{$at2x_path}");
+         background-size: $w $h; 
+  }
+}
+
+@mixin retina-js-img($path, $ext: "jpg", $w: auto, $h: auto) {
+  $at1x_path: "#{$path}.#{$ext}";
+  $at2x_path: "#{$path}@2x.#{$ext}";
+
+  background-image: url("#{$at1x_path}");
+  
+  @include breakpoint($hidpi) {
+        background-image: url("#{$at2x_path}");
+         background-size: $w $h; 
+  }
+}
+
+// Code like this; @include retina-js("/images/white-slider-arrow", png, 15px, 57px);
+
+
+/* ------------------------------------------------------------------
+            FLUID FONT SIZE poly-fluid-sizing START
+    
+$map: ($tablet: 36px, $desktop: 60px); 
+@include poly-fluid-sizing('font-size', $map); 
+    
+ ------------------------------------------------------------------ */
+
+/// least-squares-fit
+/// Calculate the least square fit linear regression of provided values
+/// @param {map} $map - A SASS map of viewport width and size value combinations
+/// @return Linear equation as a calc() function
+/// @example
+///   font-size: least-squares-fit((576: 24, 768: 24, 992: 34));
+@function least-squares-fit($map) {
+
+    // Get the number of provided breakpoints
+    $length: length(map-keys($map));
+
+    // Error if the number of breakpoints is < 2
+    @if ($length < 2) {
+        @error "leastSquaresFit() $map must be at least 2 values"
+    }
+
+    // Calculate the Means
+    $resTotal: 0;
+    $valueTotal: 0;
+
+    @each $res,
+    $value in $map {
+        $resTotal: $resTotal + $res;
+        $valueTotal: $valueTotal + $value;
+    }
+
+    $resMean: $resTotal/$length;
+    $valueMean: $valueTotal/$length;
+
+    // Calculate some other stuff
+    $multipliedDiff: 0;
+    $squaredDiff: 0;
+
+    @each $res,
+    $value in $map {
+
+        // Differences from means
+        $resDiff: $res - $resMean;
+        $valueDiff: $value - $valueMean;
+
+        // Sum of multiplied differences
+        $multipliedDiff: $multipliedDiff + ($resDiff * $valueDiff);
+
+        // Sum of squared resolution differences
+        $squaredDiff: $squaredDiff + ($resDiff * $resDiff);
+    }
+
+    // Calculate the Slope
+    $m: $multipliedDiff / $squaredDiff;
+
+    // Calculate the Y-Intercept
+    $b: $valueMean - ($m * $resMean);
+
+    // Return the CSS calc equation
+    @return calc(#{$m*100}vw + #{$b}px);
+
+}
+
+/// poly-fluid-sizing
+/// Generate linear interpolated size values through multiple break points
+/// @param $property - A string CSS property name
+/// @param $map - A SASS map of viewport unit and size value pairs
+/// @requires function linear-interpolation
+/// @requires function map-sort
+/// @example
+///   @include poly-fluid-sizing('font-size', (576px: 22px, 768px: 24px, 992px: 34px));
+@mixin poly-fluid-sizing($property, $map) {
+    // Get the number of provided breakpoints
+    $length: length(map-keys($map));
+
+    // Error if the number of breakpoints is < 2
+    @if ($length < 2) {
+        @error "poly-fluid-sizing() $map requires at least values"
+    }
+
+    // Sort the map by viewport width (key)
+    $map: map-sort($map);
+    $keys: map-keys($map);
+
+    // Minimum size
+    #{$property}: map-get($map, nth($keys, 1));
+
+    // Interpolated size through breakpoints
+    @for $i from 1 through ($length - 1) {
+        @media (min-width: nth($keys, $i)) {
+            #{$property}: linear-interpolation((nth($keys, $i): map-get($map, nth($keys, $i)), nth($keys, ($i+1)): map-get($map, nth($keys, ($i + 1)))));
+        }
+    }
+
+    // Maxmimum size
+    @media (min-width:nth($keys, $length)) {
+        #{$property}: map-get($map, nth($keys, $length));
+    }
+}
+
+/// linear-interpolation
+/// Calculate the definition of a line between two points
+/// @param $map - A SASS map of viewport widths and size value pairs
+/// @returns A linear equation as a calc() function
+/// @example
+///   font-size: linear-interpolation((320px: 18px, 768px: 26px));
+@function linear-interpolation($map) {
+    $keys: map-keys($map);
+
+    @if (length($keys) !=2) {
+        @error "linear-interpolation() $map must be exactly 2 values";
+    }
+
+    // The slope
+    $m: (map-get($map, nth($keys, 2)) - map-get($map, nth($keys, 1)))/(nth($keys, 2) - nth($keys, 1));
+
+    // The y-intercept
+    $b: map-get($map, nth($keys, 1)) - $m * nth($keys, 1);
+
+    // Determine if the sign should be positive or negative
+    $sign: "+";
+
+    @if ($b < 0) {
+        $sign: "-";
+        $b: abs($b);
+    }
+
+    @return calc(#{$m*100}vw #{$sign} #{$b});
+}
+
+/// list-sort
+/// Sort a SASS list
+/// @param $list - A SASS list
+/// @returns A sorted SASS list
+/// @requires function list-remove
+@function list-sort($list) {
+    $sortedlist: ();
+
+    @while length($list)>0 {
+        $value: nth($list, 1);
+
+        @each $item in $list {
+            @if $item < $value {
+                $value: $item;
+            }
+        }
+
+        $sortedlist: append($sortedlist, $value, 'space');
+        $list: list-remove($list, index($list, $value));
+    }
+
+    @return $sortedlist;
+}
+
+/// map-sort
+/// Sort map by keys
+/// @param $map - A SASS map
+/// @returns A SASS map sorted by keys
+/// @requires function list-sort
+@function map-sort($map) {
+    $keys: list-sort(map-keys($map));
+    $sortedMap: ();
+
+    @each $key in $keys {
+        $sortedMap: map-merge($sortedMap, ($key: map-get($map, $key)));
+    }
+
+    @return $sortedMap;
+}
+
+/// list-remove
+/// Remove an item from a list
+/// @param $list - A SASS list
+/// @param $index - The list index to remove
+/// @returns A SASS list
+@function list-remove($list, $index) {
+    $newList: ();
+
+    @for $i from 1 through length($list) {
+        @if $i !=$index {
+            $newList: append($newList, nth($list, $i), 'space');
+        }
+    }
+
+    @return $newList;
+}
+
+/* ------------------------------------------------------------------
+            FLUID FONT SIZE poly-fluid-sizing END
+ ------------------------------------------------------------------ */
+
+
+
+
+ /* ------------------------------------------------------------------
+            FLUID FONT SIZE interpolate START
+
+// Found here https://codepen.io/MadeByMike/pen/vNrvdZ?editors=1100
+
+Single property 
+// html {
+// 	@include interpolate(font-size, 320px, 1366px, 14px, 20px);
+// }
+
+Multiple properties with same values 
+// h1,h2,h3,h4,h5 {
+// 	@include interpolate((padding-top, padding-bottom), 20rem, 70rem, 0rem, .5rem);
+// }
+    
+ ------------------------------------------------------------------*/
+
+@mixin interpolate($properties, $min-screen, $max-screen, $min-value, $max-value) {
+	& {
+		@each $property in $properties {
+			#{$property}: $min-value;
+		}
+
+		@media screen and (min-width: $min-screen) {
+			@each $property in $properties {
+				#{$property}: calc-interpolation($min-screen, $min-value, $max-screen, $max-value); 
+			}
+		}
+
+		@media screen and (min-width: $max-screen) {
+			@each $property in $properties {
+				#{$property}: $max-value;
+			}
+		}
+	}
+}
+
+// Requires the calc-interpolation function which can also be used independently
+
+@function calc-interpolation($min-screen, $min-value, $max-screen, $max-value) {
+	$a: ($max-value - $min-value) / ($max-screen - $min-screen);
+	$b: $min-value - $a * $min-screen; 
+
+	$sign: "+";
+	@if ($b < 0) {
+		$sign: "-";
+		$b: abs($b);
+	}
+	@return calc(#{$a*100}vw #{$sign} #{$b});
+}
+
+
+ /* ------------------------------------------------------------------
+            FLUID FONT SIZE interpolate END
+ ------------------------------------------------------------------*/
+
+
+
+  /* ------------------------------------------------------------------
+            FLUID FONT SIZE font-size START
+
+// Found here https://codepen.io/MadeByMike/pen/vNrvdZ?editors=1100
+
+//https://www.smashingmagazine.com/2015/06/responsive-typography-with-sass-maps/
+
+@include font-size($h1-font-sizes); 
+$h1-font-sizes: (
+  null  : 3.6rem,
+  // "$tablet-sml" : 3.6rem,
+  "$desktop-sml": 6rem,
+);
+ ------------------------------------------------------------------*/
+
+
+@mixin font-size($fs-map, $fs-breakpoints: $breakpoints) {
+  @each $fs-breakpoint, $fs-font-size in $fs-map {
+    @if $fs-breakpoint == null {
+      //font-size: $fs-font-size;
+      @include make-font-size($fs-font-size);
+    }
+    @else {
+        // If $fs-font-size is a key that exists in $fs-breakpoints, use the value
+      @if map-has-key($fs-breakpoints, $fs-breakpoint) {
+        $fs-breakpoint: map-get($fs-breakpoints, $fs-breakpoint);
+      }
+      @media screen and (min-width: $fs-breakpoint) {
+     //   font-size: $fs-font-size;
+     @include make-font-size($fs-font-size);
+      }
+    }
+  }
+}
+
+
+// Utility function for mixin font-size
+@mixin make-font-size($fs-font-size) {
+  // If $fs-font-size is a list, include
+  // both font-size and line-height
+  @if type-of($fs-font-size) == "list" {
+    font-size: nth($fs-font-size, 1);
+    @if (length($fs-font-size) > 1) {
+      line-height: nth($fs-font-size, 2);
+    }
+  }
+  @else {
+    font-size: $fs-font-size;
+  }
+}
+
+  /* ------------------------------------------------------------------
+            FLUID FONT SIZE font-size END
+ ------------------------------------------------------------------*/
+
+
+
+
+
+
+ // Make it easier to use rems by adding them in pixel values. It will then be proportional at any size
+// @function r($size) {
+//     $remSize: $size / 16px;
+//     @return #{$remSize}rem;
+// }
+
+/* Automatically generate percentage based on width you want for element based on the context of original design */
+
+// @function c($unit) {
+//     $percent: percentage($unit / $original-width);
+//     @return $percent;
+// }
+
+
+// Sprite Mixin
+// @mixin sprite-position-2x($sprite) {
+//     $sprite-offset-x: nth($sprite, 3);
+//     $sprite-offset-y: nth($sprite, 4);
+//     background-position: ($sprite-offset-x / 2) ($sprite-offset-y / 2);
+// }
+
+// @mixin sprite-2x($sprite) {
+//     @include sprite-image($sprite);
+//     @include sprite-position-2x($sprite);
+// }
+
+/* Retina Image Sizing
+ *-------------------------*/
+
+// @mixin retina-img($dims, $img) {
+//     $hidpi: min-resolution 1.5dppx;
+//     @include breakpoint($hidpi) {
+//         background-size: $dims;
+//         background-image: $img;
+//     }
+// }
+
+/* BACKGROUND GRADIENT */
+
+// @mixin background-gradient($startColor: #3C3C3C, $endColor: #999999) {
+//     background-color: $startColor;
+//     background-image: linear-gradient(top, $startColor, $endColor);
+//     filter: progid:DXImageTransform.Microsoft.gradient(startColorStr="#{$startColor}", endColorStr="#{$endColor}");
+// }
